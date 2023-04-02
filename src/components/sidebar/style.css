@@ -1,8 +1,5 @@
 .nav {
-    width: 160px;
-    height: 100%;
     background-color: #09006F;
-    color: white;
 }
 
 img {
@@ -19,6 +16,11 @@ img {
     width: 70px;
 }
 
-.nav-link {
+h6 {
+    margin-top: 10px;
+}
+
+a {
+    text-decoration: none;
     color: inherit;
 }
