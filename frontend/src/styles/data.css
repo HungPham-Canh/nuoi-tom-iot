@@ -1,0 +1,14 @@
+.current-temp {
+    background-color: #E7D5FF;
+    border-radius: 10px;
+    width: 200px;
+    margin: 25px;
+    padding: 10px;
+}
+
+.time-temp {
+    background-color: #F7F1FF;
+    border-radius: 10px;
+    margin: 25px;
+    padding: 10px;
+}

@@ -1,4 +1,5 @@
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend } from 'recharts';
+import '../../styles/data.css'
 const data = [
     {
       "name": "Page A",
@@ -45,22 +46,34 @@ const data = [
   ]
 
 const renderLineChart = (
-    <ResponsiveContainer width="100%" aspect={3}>
-         <LineChart width={500} height={300} data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-            <CartesianGrid strokeDasharray="1" horizontal="" vertical="true"/>
-            <XAxis dataKey="name" tick={{fill: "black"}}/>
-            <YAxis tick={{fill: "black"}}/>
-            <Tooltip />
-            <Legend />
-            {/* <Line type="monotone" dataKey="pv" stroke="#8884d8" /> */}
-            <Line  dataKey="uv" stroke="#82ca9d" activeDot={{r: 6}}/>
-        </LineChart>
-    </ResponsiveContainer>
+    <div className='time-temp'>
+        <h5>Daily temp</h5>
+        <div class="mb-4"></div>
+        <ResponsiveContainer style={{marginLeft: 0}} width="100%" aspect={3}>
+            <LineChart width={500} height={300} data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+                <CartesianGrid strokeDasharray="1" horizontal="" vertical="true"/>
+                <XAxis dataKey="name" tick={{fill: "black"}}/>
+                <YAxis tick={{fill: "black"}}/>
+                <Tooltip />
+                <Legend />
+                {/* <Line type="monotone" dataKey="pv" stroke="#8884d8" /> */}
+                <Line  dataKey="uv" stroke="#82ca9d" activeDot={{r: 6}}/>
+            </LineChart>
+        </ResponsiveContainer>
+    </div>
  
 );
 
 function Data() {
-    return renderLineChart
+    return (
+        <div>
+            <div className='current-temp'>
+                <h5>Current temp</h5>
+                <h1>36 °C</h1>
+            </div>
+            {renderLineChart}
+        </div>
+        )
 }
 
 export default Data

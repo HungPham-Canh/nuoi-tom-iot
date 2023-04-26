@@ -35,7 +35,7 @@ function App() {
               </Routes>
             </Col>
             <Col>
-              <h1>Notifications</h1>
+              <h3>Notifications</h3>
             </Col>
           </Row>
         </Col>
