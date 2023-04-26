@@ -17,11 +17,11 @@ function App() {
         <Col lg="1">
           <Sidebar />
         </Col>
-        <Col>
+        <Col className="d-flex flex-column">
           <Row>
             <h1>Header</h1>
           </Row>
-          <Row>
+          <Row className="flex-grow-1">
             <Col lg="9">
               <Routes>
                 <Route path="/" element={<Home />}></Route>
