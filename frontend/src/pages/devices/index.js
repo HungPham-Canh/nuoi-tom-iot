@@ -1,22 +1,32 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+// import React, { useState } from 'react';
+import devices from './devicelist/devicelist';
+import Device from "./device";
+import { ReactComponent as AddIcon } from "./add.svg"
+import { ReactComponent as DownLoadIcon } from "./download.svg"
+import './style.css'
 
 function Devices() {
-    const [isOn, setIsOn] = useState(false);
-
-    const handleClick = async () => {
-        setIsOn(!isOn);
-        try {
-            await axios.post('/api/toggle', { isOn: !isOn });
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
     return (
-        <div>
-            <button onClick={handleClick}>{isOn ? 'ON' : 'OFF'}</button>
-        </div>
+        <main className="p-4 rounded-4 m-4">
+            <h2 className="fw-bold mb-4">Danh sách thiết bị ao 1</h2>
+            <div class="d-flex flex-wrap justify-content-between text-center">
+                {devices.map(e =>
+                    <Device e={e} key={e.id} />
+                )}
+            </div>
+            <div class="d-flex justify-content-between">
+                <div>
+                    <button class="btn rounded-4" id="add-device">
+                        <AddIcon />
+                    </button>
+                    <br />
+                    <span class="fw-bold fs-5">Thêm thiết bị</span>
+                </div>
+                <div>
+                    <button class="shadow btn rounded-5" id="down-load"><span class="fw-bold fs-5">Xuất file báo cáo </span><DownLoadIcon /></button>
+                </div>
+            </div>
+        </main>
     );
 }
 
