@@ -7,7 +7,7 @@ import dashboardIcon from './dashboard-icon.svg'
 import devicesIcon from './devices-icon.svg'
 import settingsIcon from './settings-icon.svg'
 import dataIcon from './data-icon.svg'
-
+import React from 'react';
 function Sidebar() {
     return (
         <>

@@ -12,6 +12,7 @@ import Settings from './pages/settings'
 import Data from './pages/data'
 import Signup from './pages/signup'
 
+import React from 'react';
 function App() {
   return (
     <Container fluid className="px-0">
