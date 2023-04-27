@@ -4,7 +4,7 @@ import bodyParser from 'body-parser';
 import db from './config/database'
 import route from './app/routes'
 const methodOverride =  require('method-override')
-import client from './config/mqtt'
+import listenAdafruit from './config/listenAda'
 
 db.connect()
 
