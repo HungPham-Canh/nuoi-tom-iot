@@ -4,6 +4,8 @@ import pondController from '../controllers/PondController'
 
 router.get('/', pondController.index)
 router.get('/:pondNo/pump', pondController.getPumpData)
+// router.post(':pondNo/pump', pondController.sendPumpData)
+//https://localhost:8080/pond/1/pump
 router.get('/:pondNo/temp', pondController.getTempData)
 router.get('/:pondNo/light', pondController.getLightData)
 
