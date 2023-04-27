@@ -1,0 +1,35 @@
+main {
+    background-color: #F7F1FF;
+}
+
+.device {
+    width: 35%;
+    height: 150px;
+    box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.2), -10px -10px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 575.98px) {
+    .device {
+        width: 100%;
+    }
+}
+
+.on {
+    background-color: #E7D5FF;
+    color: #09006E;
+}
+
+.off {
+    background-color: #09006E;
+    color: white;
+}
+
+#add-device {
+    background-color: #9747FF !important;
+}
+
+#down-load {
+    color: white;
+    background-color: #D51313 !important;
+    vertical-align: middle;
+}
