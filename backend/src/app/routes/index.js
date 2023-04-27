@@ -1,7 +1,9 @@
-
+import userRouter from './userRouter'
+import pondRouter from './pondRoute'
 
 function route(app) {
- 
+    app.use('/user', userRouter)
+    app.use('/pond', pondRouter)
 }
 
-module.exports = route
+export default route
