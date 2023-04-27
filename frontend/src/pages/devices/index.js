@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // import React, { useState } from 'react';
 import devices from './devicelist/devicelist';
 import Device from "./device";
@@ -28,6 +29,10 @@ function Devices() {
             </div>
         </main>
     );
+=======
+function Devices() {
+    return <h1>Devices</h1>
+>>>>>>> 231ba884cfda9c9a48b9a477308f35228a53331d
 }
 
 export default Devices
