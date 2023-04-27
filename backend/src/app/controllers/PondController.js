@@ -15,6 +15,10 @@ class PondController {
     getTempData(req, res, next) {}
 
     getLightData(req, res, next) {}
+
+
+    //use for mqtt data
+    addTempData(data) {}
 }
 
 export default new PondController
