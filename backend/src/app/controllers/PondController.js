@@ -1,11 +1,20 @@
 import Pond from '../models/Pond'
+import PumpData from '../models/PumpData'
 
-class Pond {
+class PondController {
     index(req, res, next) {
         Pond.find({})
             .then(ponds => res.json(ponds))
             .catch(next)
     }
+
+    getPumpData(req, res, next) {
+        
+    }
+
+    getTempData(req, res, next) {}
+
+    getLightData(req, res, next) {}
 }
 
-export default new Pond
+export default new PondController

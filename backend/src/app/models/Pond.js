@@ -6,6 +6,6 @@ const Pond = new Schema({
     size: {type: Number}
 })
 
-User.plugin(AutoIncrement, {inc_field: 'pondNo'})
+Pond.plugin(AutoIncrement, {inc_field: 'pondNo'})
 
 export default mongoose.model('Pond',Pond) 

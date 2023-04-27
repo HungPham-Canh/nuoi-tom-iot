@@ -2,8 +2,9 @@ require('dotenv').config()
 const express = require('express');
 import bodyParser from 'body-parser';
 import db from './config/database'
-import route from './routes'
+import route from './app/routes'
 const methodOverride =  require('method-override')
+import client from './config/mqtt'
 
 db.connect()
 

@@ -4,6 +4,6 @@ import userController from '../controllers/UserController'
 
 router.post('/signup', userController.signup)
 router.get('/signin', userController.signin)
-router.patch('/changePassword', userController.changePassword)
+// router.patch('/changePassword', userController.changePassword)
 
 export default router
