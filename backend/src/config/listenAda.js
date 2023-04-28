@@ -1,4 +1,4 @@
-import pondController from '../app/controllers/PondController'
+import tempController from '../app/controllers/TempController'
 import client from './mqtt'
 
 export default client.on('message', (topic, message) => {
@@ -6,6 +6,7 @@ export default client.on('message', (topic, message) => {
   const feed_key = topic.split('/')[2]
   switch (feed_key) {
     case 'dadn.se-temp':
-        pondController.addTempData(message)
+        tempController.addTempData(message)
+        break
   }
 });
