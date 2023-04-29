@@ -3,13 +3,16 @@ import { Route, Routes } from "react-router-dom"
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
+import Header from './components/header'
 import Sidebar from './components/sidebar'
 import Home from './pages/home'
 import Dashboard from './pages/dashboard'
 import Devices from './pages/devices'
 import Settings from './pages/settings'
 import Data from './pages/data'
+import Signup from './pages/signup'
 
+import React from 'react';
 function App() {
   return (
     <Container fluid className="px-0">
@@ -19,12 +22,13 @@ function App() {
         </Col>
         <Col>
           <Row>
-            <h1>Header</h1>
+            <Header/>
           </Row>
           <Row>
             <Col lg="9">
               <Routes>
                 <Route path="/" element={<Home />}></Route>
+                <Route path="/signup" element={<Signup/>} />
                 <Route path="/dashboard" element={<Dashboard />}></Route>
                 <Route path="/devices" element={<Devices />}></Route>
                 <Route path="/settings" element={<Settings />}></Route>
@@ -32,7 +36,7 @@ function App() {
               </Routes>
             </Col>
             <Col>
-              <h1>Notifications</h1>
+              <h3>Notifications</h3>
             </Col>
           </Row>
         </Col>
