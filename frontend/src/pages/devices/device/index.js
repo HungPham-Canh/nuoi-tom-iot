@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
 import Switch from "react-switch";
+import { SERVER } from '../../../config/server';
+import axios from "axios";
 
-function Device({ e }) {
+function Device({ e, pondNo }) {
     const [isOn, setIsOn] = useState(false);
-    const { icon, name } = e;
+    const { icon, name, id } = e;
+    const device = ["light", "pump", "temp", "fan"];
 
     const handleClick = async () => {
-        setIsOn(!isOn);
-
         // try {
-        //     await axios.post('/api/toggle', { isOn: !isOn });
+        //     await axios.post(`${SERVER}/api/toggle/${device[id]}`, { pondNo, value: !isOn });
+        //     setIsOn(!isOn);
         // } catch (error) {
         //     console.log(error);
         // }
+        axios.post('http://localhost:8080/api/toggle/pump', { pondNo, value: !isOn });
     };
 
     const getClass = () => {
