@@ -10,8 +10,6 @@ router.get('/:pondNo/pump', pondController.getPumpData)
 router.get('/:pondNo/temp', pondController.getCurrTempData)
 router.get('/:pondNo/temps', pondController.getAllTempData)
 router.get('/:pondNo/light', pondController.getLightData)
-router.post('/api/toggle/pump', (req, res) => {
-    console.log(req.body);
-})
+router.post('/toggle/pump', pumpController.toggle)
 
 export default router

@@ -9,13 +9,12 @@ function Device({ e, pondNo }) {
     const device = ["light", "pump", "temp", "fan"];
 
     const handleClick = async () => {
-        // try {
-        //     await axios.post(`${SERVER}/api/toggle/${device[id]}`, { pondNo, value: !isOn });
-        //     setIsOn(!isOn);
-        // } catch (error) {
-        //     console.log(error);
-        // }
-        axios.post('http://localhost:8080/api/toggle/pump', { pondNo, value: !isOn });
+        try {
+            await axios.post(`${SERVER}/ponds/toggle/${device[id]}`, { pondNo, value: !isOn });
+            setIsOn(!isOn);
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     const getClass = () => {
