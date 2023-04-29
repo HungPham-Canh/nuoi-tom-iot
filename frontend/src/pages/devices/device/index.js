@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 import Switch from "react-switch";
+import DOMAIN from "../../../config";
 
 function Device({ e }) {
     const [isOn, setIsOn] = useState(false);
-    const { icon, name } = e;
+    const { icon, name, id } = e;
 
     const handleClick = async () => {
         setIsOn(!isOn);
 
-        // try {
-        //     await axios.post('/api/toggle', { isOn: !isOn });
-        // } catch (error) {
-        //     console.log(error);
-        // }
+        try {
+            await axios.post('DOMAIN/pond/toggle/', { isOn: !isOn });
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     const getClass = () => {
