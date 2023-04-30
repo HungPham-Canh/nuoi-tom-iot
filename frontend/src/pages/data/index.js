@@ -45,6 +45,7 @@ const data = [
     }
   ]
 
+  // export default Data
 const renderLineChart = (
     <ResponsiveContainer width="100%" aspect={3}>
          <LineChart width={500} height={300} data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
