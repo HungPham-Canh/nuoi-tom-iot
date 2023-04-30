@@ -1,13 +1,8 @@
 import React from 'react';
 import '../../styles/Header.css'
-// import { Form, FormControl, Button } from 'react-bootstrap';
-// import './SearchBar.css';
-// import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
-// import { Avatar } from "@mui/material";
+import { ReactComponent as InfoIcon } from "./info.svg";
 
 function Header() {
-
-  // const getLocal = JSON.parse(localStorage.getItem('userInfo'))
 
   return (
     <header>
@@ -19,15 +14,17 @@ function Header() {
               <button type="submit" class="btn btn-search">
                   <i class="fa fa-search fa-flip-horizontal"></i>
               </button>
-              <input class = "search-bar" type='text' placeholder='Search'></input>
+              <input class="shadow btn rounded-5 search-bar" type='text' placeholder='Search'></input>
             </div>
 
             <div class = "info">
-              {/* link image */}
-              {/* <image src="https://kit.fontawesome.com/11cd3562ae.js" crossorigin="anonymous"></image> */}
+              <frame class = "infoLogo shadow btn rounded-5">
+                  <InfoIcon></InfoIcon>
+              </frame>
+              <frame style={{textAlign: "center"}} margin="left" class="text">Information User</frame>
             </div>
           </div>
-      </div>
+          </div>
     </header>
     
   );
