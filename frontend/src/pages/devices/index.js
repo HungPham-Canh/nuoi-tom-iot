@@ -11,7 +11,7 @@ function Devices() {
             <h2 className="fw-bold mb-4">Danh sách thiết bị ao 1</h2>
             <div class="d-flex flex-wrap justify-content-between text-center">
                 {devices.map(e =>
-                    <Device e={e} key={e.id} />
+                    <Device e={e} pondNo={1} key={e.id} />
                 )}
             </div>
             <div class="d-flex justify-content-between">
