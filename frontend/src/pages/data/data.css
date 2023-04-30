@@ -1,4 +1,4 @@
-.current-temp {
+.current-data {
     background-color: #E7D5FF;
     border-radius: 10px;
     width: 200px;
@@ -6,7 +6,7 @@
     padding: 10px;
 }
 
-.time-temp {
+.time-data {
     background-color: #F7F1FF;
     border-radius: 10px;
     margin: 25px;

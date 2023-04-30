@@ -9,6 +9,7 @@ router.get('/:pondNo/pump', pondController.getPumpData)
 router.get('/:pondNo/temp', pondController.getCurrTempData)
 router.get('/:pondNo/temps', pondController.getAllTempData)
 
-router.get('/:pondNo/light', pondController.getLightData)
+router.get('/:pondNo/light', pondController.getCurrLightData)
+router.get('/:pondNo/lights', pondController.getAllLightData)
 
 export default router

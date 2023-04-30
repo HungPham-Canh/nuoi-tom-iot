@@ -1,13 +1,14 @@
 import Chart from './Chart';
+import Current from './Current';
 
 function Data() {
     return (
         <div>
-            <div className='current-temp'>
-                <h5>Current temp</h5>
-                <h1>36 °C</h1>
-            </div>
-            <Chart />
+           <Current type="temp"/>
+           <Current type="light"/>
+
+            <Chart type="temps"/>
+            <Chart type="lights"/>
         </div>
         )
 }
