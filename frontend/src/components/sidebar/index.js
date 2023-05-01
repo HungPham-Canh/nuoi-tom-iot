@@ -11,7 +11,7 @@ import React from 'react';
 function Sidebar() {
     return (
         <>
-            <Nav className="h-100 flex-column text-white text-center justify-content-center " defaultActiveKey="/dashboard">
+            <Nav className="h-100 flex-column text-white text-center justify-content-center position-fixed" defaultActiveKey="/dashboard">
                 <Nav.Item>
                     <img src={homeIcon} alt="home" />
                     <h6 className="fw-bold"><Link to="/">SMART HOME</Link></h6>
