@@ -10,10 +10,20 @@ function Device({ e, pondNo }) {
 
     const handleClick = async () => {
         try {
-            await axios.post(`${SERVER}/ponds/toggle/${device[id]}`, { pondNo, value: !isOn });
+            await axios.post(`${SERVER}/ponds/toggle/${device[id]}`, { pondNo, value: !isOn }).then(res => {
+                // console.log(res)
+                // if (res.data !== "") {
+                //     throw Error(res.data)
+                // }
+
+                // res.data is error message
+                if (res.data) {
+                    throw new Error(res.data)
+                }
+            });
             setIsOn(!isOn);
         } catch (error) {
-            console.log(error);
+            console.error(error);
         }
     };
 
