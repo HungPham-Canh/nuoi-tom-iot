@@ -1,9 +1,9 @@
 const mqtt = require('mqtt');
 
 const AIO_USERNAME = 'CurtisDo';
-const AIO_KEY = 'aio_elTN112umL0wr62yrhTorjg4YFPj';
-const AIO_FEED_KEYS = ["dadn.se-light", "dadn.se-pump", "dadn.se-temp"]
-const topics = AIO_FEED_KEYS.map(feedName => `${AIO_USERNAME}/feeds/${feedName}`);
+const AIO_KEY = 'aio_njWD31QmgZKQYNasDifPvO8ApTQG';
+const AIO_FEED_KEYS = ["dadn.selight", "dadn.sepump", "dadn.setemp"]
+export const topics = AIO_FEED_KEYS.map(feedName => `${AIO_USERNAME}/feeds/${feedName}`);
 
 // create a client object
 const client = mqtt.connect({
@@ -49,5 +49,6 @@ client.on('connect', () => {
 client.on('error', (err) => {
   console.error('connection error:', err);
 });
+
 
 export default client
