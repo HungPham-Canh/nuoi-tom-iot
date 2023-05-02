@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router()
 import pondController from '../controllers/PondController'
-import pumpController from '../controllers/PumpController'
 
 router.get('/', pondController.index)
 router.get('/:pondNo/pump', pondController.getPumpData)
@@ -10,6 +9,5 @@ router.get('/:pondNo/pump', pondController.getPumpData)
 router.get('/:pondNo/temp', pondController.getCurrTempData)
 router.get('/:pondNo/temps', pondController.getAllTempData)
 router.get('/:pondNo/light', pondController.getLightData)
-router.post('/toggle/pump', pumpController.toggle)
 
 export default router

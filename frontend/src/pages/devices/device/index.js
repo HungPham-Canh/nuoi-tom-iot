@@ -1,30 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Switch from "react-switch";
-import { SERVER } from '../../../config/server';
-import axios from "axios";
 
-function Device({ e, pondNo }) {
+function Device({ e, pondNo, socket }) {
     const [isOn, setIsOn] = useState(false);
     const { icon, name, id } = e;
-    const device = ["light", "pump", "temp", "fan"];
 
-    const handleClick = async () => {
-        try {
-            await axios.post(`${SERVER}/ponds/toggle/${device[id]}`, { pondNo, value: !isOn }).then(res => {
-                // console.log(res)
-                // if (res.data !== "") {
-                //     throw Error(res.data)
-                // }
+    useEffect(() => {
+        socket.emit("join_channel", id)
+    }, [])
 
-                // res.data is error message
-                if (res.data) {
-                    throw new Error(res.data)
-                }
-            });
-            setIsOn(!isOn);
-        } catch (error) {
-            console.error(error);
-        }
+    useEffect(() => {
+        socket.on("render", (data) => {
+            setIsOn(data);
+        })
+    }, [socket])
+
+    const handleClick = () => {
+        socket.emit("toggle", { pondNo, value: !isOn });
     };
 
     const getClass = () => {

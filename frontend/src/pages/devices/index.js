@@ -4,6 +4,9 @@ import Device from "./device";
 import { ReactComponent as AddIcon } from "./add.svg"
 import { ReactComponent as DownLoadIcon } from "./download.svg"
 import './style.css'
+import { SERVER } from '../../config/server';
+import io from "socket.io-client";
+const socket = io.connect(SERVER);
 
 function Devices() {
     return (
@@ -11,7 +14,7 @@ function Devices() {
             <h2 className="fw-bold mb-4">Danh sách thiết bị ao 1</h2>
             <div class="d-flex flex-wrap justify-content-between text-center">
                 {devices.map(e =>
-                    <Device e={e} pondNo={1} key={e.id} />
+                    <Device e={e} pondNo={1} key={e.id} socket={socket} />
                 )}
             </div>
             <div class="d-flex justify-content-between">
