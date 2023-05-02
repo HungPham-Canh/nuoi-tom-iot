@@ -13,24 +13,34 @@ function Sidebar() {
         <>
             <Nav className="h-100 flex-column text-white text-center justify-content-center position-fixed" defaultActiveKey="/dashboard">
                 <Nav.Item>
-                    <img src={homeIcon} alt="home" />
-                    <h6 className="fw-bold"><Link to="/">SMART HOME</Link></h6>
+                    <Link to="/">
+                        <img src={homeIcon} alt="home" />
+                        <h6 className="fw-bold">SMART HOME</h6>
+                    </Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <img src={dashboardIcon} alt="dashboard" />
-                    <h6><Link to="/dashboard">Dashboard</Link></h6>
+                    <Link to="/dashboard">
+                        <img src={dashboardIcon} alt="dashboard" />
+                        <h6>Dashboard</h6>
+                    </Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <img src={devicesIcon} alt="devices" />
-                    <h6><Link as="Link" to="/devices">Devices</Link></h6>
+                    <Link as="Link" to="/devices">
+                        <img src={devicesIcon} alt="devices" />
+                        <h6>Devices</h6>
+                    </Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <img src={settingsIcon} alt="settings" />
-                    <h6><Link as="Link" to="/settings">Settings</Link></h6>
+                    <Link as="Link" to="/settings">
+                        <img src={settingsIcon} alt="settings" />
+                        <h6>Settings</h6>
+                    </Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <img src={dataIcon} alt="data" />
-                    <h6><Link as="Link" to="/data">Data</Link></h6>
+                    <Link as="Link" to="/data">
+                        <img src={dataIcon} alt="data" />
+                        <h6>Data</h6>
+                    </Link>
                 </Nav.Item>
             </Nav >
         </>

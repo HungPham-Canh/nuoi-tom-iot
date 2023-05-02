@@ -8,9 +8,10 @@ class PumpController {
         const newData = new PumpData(data)
 
         try {
-            data = JSON.stringify(data)
+            data = JSON.stringify(newData)
             const topic = topics[1]
             client.publish(topic, data, (err) => {
+                console.log(data)
                 if (err) {
                     console.log("Failed to publish feed")
                     console.error(err);

@@ -15,6 +15,7 @@ import Data from "./pages/data";
 import React, { useState } from "react";
 import LoginForm from "./components/login";
 import Notification from "./components/Notification";
+import GaugeChart from "./pages/data/Gauge";
 
 function App() {
   
@@ -41,7 +42,6 @@ function App() {
             <Col lg="9">
               <Routes>
                 <Route path="/" element={<Home />}></Route>
-                {/* <Route path="/signup" element={<Signup/>} /> */}
                 <Route path="/dashboard" element={<Dashboard />}></Route>
                 <Route path="/devices" element={<Devices />}></Route>
                 <Route path="/settings" element={<Settings />}></Route>
@@ -50,6 +50,7 @@ function App() {
             </Col>
             <Col>
               <Notification />
+              <GaugeChart/>
             </Col>
           </Row>
         </Col>
