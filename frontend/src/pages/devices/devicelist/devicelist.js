@@ -1,7 +1,7 @@
-import { ReactComponent as LightIcon } from "./light-bulb.svg"
-import { ReactComponent as PumpIcon } from "./pump.svg"
-import { ReactComponent as FanIcon } from "./fan.svg"
-import { ReactComponent as TempIcon } from "./temp.svg"
+import { ReactComponent as LightIcon } from "./icon/light-bulb.svg"
+import { ReactComponent as PumpIcon } from "./icon/pump.svg"
+import { ReactComponent as FanIcon } from "./icon/fan.svg"
+import { ReactComponent as TempIcon } from "./icon/temp.svg"
 
 const devices = [
     {
