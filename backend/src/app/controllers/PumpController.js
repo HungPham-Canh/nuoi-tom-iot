@@ -3,8 +3,22 @@ import client, { topics } from "../../config/mqtt";
 
 //use for adding data from adafruit
 class PumpController {
-    toggle(req, res) {
-        let data = req.body;
+
+    addPumpData(data) {
+        const topic = topics[1]
+        const newAdaData = JSON.stringify(data)
+
+        client.publish(topic, newAdaData, (err) => {
+            if (err) {
+                console.log("Failed to publish feed")
+                console.error(err);
+            } else {
+                console.log(`message published to ${topic}: ${newAdaData}`);
+            }
+        })
+
+
+        // add data to database
         const newData = new PumpData(data)
 
         try {
@@ -36,15 +50,12 @@ class PumpController {
         catch (e) {
             res.send(e.message)
         }
-        // client.pulish(data)
-        // const newData = new PumpData(data)
-        // // client.publish(newData)
-        // console.log(newData)
-
+        
+        //newest commit
         // newData.save()
         //     .then(() => { console.log('Added successfully') })
         //     .catch((err) => console.log("Added failed, error: " + err))
-    }
+    }s
 }
 
 export default new PumpController

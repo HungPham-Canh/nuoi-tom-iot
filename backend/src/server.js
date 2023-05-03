@@ -6,6 +6,8 @@ import db from './config/database'
 import route from './app/routes'
 const methodOverride = require('method-override')
 import listenAdafruit from './config/listenAda'
+import { Server } from 'socket.io'
+import { bridge } from "./utils/bridge"
 
 db.connect()
 
@@ -19,9 +21,20 @@ app.use(bodyParser.json())
 
 app.use(methodOverride('_method'))
 
+const server = require('http').createServer(app)
+
+const io = new Server(server, {
+    cors: {
+        origin: 'http://localhost:3000',
+        methods: ['GET', 'POST']
+    }
+})
+
+bridge(io)
+
 route(app)
 
-app.listen(PORT || 3001, (error) => {
+server.listen(PORT || 3001, (error) => {
     if (!error) {
         console.log(`Server is running on port ${PORT}`);
     }

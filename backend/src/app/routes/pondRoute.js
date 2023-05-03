@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router()
 import pondController from '../controllers/PondController'
-import pumpController from '../controllers/PumpController'
 
 router.get('/', pondController.index)
 router.get('/:pondNo/pump', pondController.getPumpData)
