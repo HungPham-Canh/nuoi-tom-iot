@@ -16,12 +16,12 @@ class UserController {
         User.findOne({email: req.body.email})
             .then(user => {
                 console.log(user)
-                // if user.password == req.body.password {
-                //     res.send("Password not correct")
-                // }
-                // else res.send("Login success")
+                if (user.password == req.body.password) {
+                    res.json({msg: "Password not correct"})
+                }
+                else res.json({msg: "Login success", account: user})
             })
-            .catch(err => {})
+            .catch(err => res.json({msg: "Username not found"}))
     }
 
     // changePassword(req, res, next) {

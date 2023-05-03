@@ -5,12 +5,12 @@ function Data() {
     return (
         <div>
             <div className='row'>
-                <div className='col'>
+                <div className='col-6'>
                     <Current type="temp"/>
                 </div>
-                <div className='col'>
+                {/* <div className='col-6'>
                     <Current type="light"/>  
-                </div>
+                </div> */}
             </div>
 
             <Chart type="temps"/>

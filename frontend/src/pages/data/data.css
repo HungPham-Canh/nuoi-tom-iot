@@ -1,7 +1,7 @@
 .current-data {
     background-color: #E7D5FF;
     border-radius: 10px;
-    width: 240px;
+    /* width: 240px; */
     margin: 25px;
     padding: 10px;
 }
@@ -10,5 +10,6 @@
     background-color: #F7F1FF;
     border-radius: 10px;
     margin: 25px;
-    padding: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
 }

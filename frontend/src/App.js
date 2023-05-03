@@ -13,9 +13,9 @@ import Data from "./pages/data";
 // import Signup from "./pages/signup";
 
 import React, { useState } from "react";
-import LoginForm from "./components/login";
+import LoginForm from "./pages/auth";
 import Notification from "./components/Notification";
-import GaugeChart from "./pages/data/Gauge";
+import AuthPage from "./pages/auth";
 
 function App() {
   
@@ -24,7 +24,7 @@ function App() {
   if (!isLogIn && !localStorage.getItem("username")) {
     return (
       <Container fluid className="px-0">
-        <LoginForm setIsLogIn={setIsLogIn} />
+        <AuthPage setIsLogIn={setIsLogIn} />
       </Container>
     );
   }
@@ -50,7 +50,6 @@ function App() {
             </Col>
             <Col>
               <Notification />
-              <GaugeChart/>
             </Col>
           </Row>
         </Col>
