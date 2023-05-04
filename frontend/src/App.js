@@ -13,9 +13,8 @@ import Data from "./pages/data";
 // import Signup from "./pages/signup";
 
 import React, { useState } from "react";
-import LoginForm from "./pages/auth";
 import Notification from "./components/Notification";
-import AuthPage from "./pages/auth";
+import LoginForm from "./pages/auth/login";
 
 function App() {
   
@@ -24,7 +23,7 @@ function App() {
   if (!isLogIn && !localStorage.getItem("username")) {
     return (
       <Container fluid className="px-0">
-        <AuthPage setIsLogIn={setIsLogIn} />
+        <LoginForm setLogin={setIsLogIn} />
       </Container>
     );
   }

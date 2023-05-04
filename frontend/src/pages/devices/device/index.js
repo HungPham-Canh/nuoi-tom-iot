@@ -1,22 +1,41 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Switch from "react-switch";
+import { SERVER } from '../../../config/server';
+import axios from "axios";
+import getData from '../../../utils/getData';
 
-function Device({ e, pondNo, socket }) {
+function Device({ e, pondNo }) {
     const [isOn, setIsOn] = useState(false);
-    const { icon, name, id } = e;
+    const {type, icon, name} = e;
+    // const device = ["light", "pump", "temp", "fan"];
 
     useEffect(() => {
-        socket.emit("join_channel", id)
-    }, [])
+        setInterval(() => {
+            getData('https://io.adafruit.com/api/v2/CurtisDo/feeds/dadn.sepump/data')
+                .then(datas => {
+                    const currentData = datas[0]
+                    setIsOn(Number(currentData.value))
+                })
+        }, 3000)
+    })
 
-    useEffect(() => {
-        socket.on("render", (data) => {
-            setIsOn(data);
-        })
-    }, [socket])
+    const handleClick = async () => {
+        try {
+            await axios.post(`${SERVER}/ponds/toggle/${type}`, { pondNo, value: !isOn }).then(res => {
+                // console.log(res)
+                // if (res.data !== "") {
+                //     throw Error(res.data)
+                // }
 
-    const handleClick = () => {
-        socket.emit("toggle", { pondNo, value: !isOn });
+                // res.data is error message
+                if (res.data) {
+                    throw new Error(res.data)
+                }
+            });
+            setIsOn(!isOn);
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     const getClass = () => {

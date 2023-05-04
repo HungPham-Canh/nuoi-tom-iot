@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../../styles/Login.css";
 import {SERVER} from '../../config/server'
 
-const LoginForm = ({ setIsLogIn }) => {
+const LoginForm = ({ setLogin }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -16,19 +16,20 @@ const LoginForm = ({ setIsLogIn }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    const form = e.target
-    const formData = new FormData(form)
+    // const form = e.target
+    // // console.log(form)
+    // const formData = new FormData(form)
 
-    fetch(`${SERVER}/user/signin`, {
-      method: 'POST',
-      body: formData
-    })
+
+    // console.log(formData)
+
+    fetch(`${SERVER}/user/signin?email=${username}&password=${password}`)
     .then((response) => response.json())
     .then(data => {
       if(data.msg === "Login success") {
-        // localStorage.setItem("isLogin", true);
-        // localStorage.setItem("username", data.account["username"]);
-        setIsLogIn(true);
+        localStorage.setItem("isLogin", true);
+        localStorage.setItem("username", data.account["username"]);
+        setLogin(true);
       }
       else setError(data.msg);
     })
@@ -46,6 +47,7 @@ const LoginForm = ({ setIsLogIn }) => {
         <div className="form-input">
           <input
             type="text"
+            name="username"
             id="username"
             placeholder="Username"
             value={username}
@@ -55,6 +57,7 @@ const LoginForm = ({ setIsLogIn }) => {
         <div className="form-input">
           <input
             type="password"
+            name="password"
             placeholder="Nhập mật khẩu"
             id="password"
             value={password}

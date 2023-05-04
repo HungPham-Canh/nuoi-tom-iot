@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import './data.css'
 import getData from '../../utils/getData';
-import {username, FEED_TEMP, FEED_LIGHT} from '../../config/mqtt'
+import {FEED_TEMP, FEED_LIGHT, AIO_USERNAME} from '../../config/mqtt'
 import {ADA_SERVER} from '../../config/server'  
 
 
@@ -36,7 +36,7 @@ export default function Chart(props) {
 
     useEffect(() => {
         setTimeout(() => {
-            getData(`${ADA_SERVER}/api/v2/${username}/feeds/${(props.type === "temps")? FEED_TEMP : FEED_LIGHT}/data?start_time=${isoStartTime}&end_time=${isoEndTime}`)
+            getData(`${ADA_SERVER}/api/v2/${AIO_USERNAME}/feeds/${(props.type === "temps")? FEED_TEMP : FEED_LIGHT}/data?start_time=${isoStartTime}&end_time=${isoEndTime}`)
                 .then(datas => {
                     // console.log("call api")
                     let newDatas = datas.map(data => {

@@ -13,13 +13,14 @@ class UserController {
     }
 
     signin(req, res, next) {
-        User.findOne({email: req.body.email})
+        // console.log(req.query)
+        User.findOne({email: req.query.email})
             .then(user => {
-                console.log(user)
-                if (user.password == req.body.password) {
-                    res.json({msg: "Password not correct"})
+                // console.log(user)
+                if (user.password == req.query.password) {
+                    res.json({msg: "Login success", account: user})
                 }
-                else res.json({msg: "Login success", account: user})
+                else {res.json({msg: "Password not correct"})}
             })
             .catch(err => res.json({msg: "Username not found"}))
     }

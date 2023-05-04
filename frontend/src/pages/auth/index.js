@@ -7,7 +7,7 @@ export default function AuthPage({setIsLogin}) {
             {/* <Routes>
                 <Route path="/login" element={<LoginForm />}></Route>
             </Routes> */}
-            <LoginForm setIsLogIn={setIsLogin}/>
+            <LoginForm setLogin={setIsLogin}/>
         </Container>
     )
 }
