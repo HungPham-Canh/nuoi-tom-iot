@@ -7,7 +7,7 @@ def getPort():
     for i in range(0, N):
         port = ports[i]
         strPort = str(port)
-        if "USB-SERIAL CH340" in strPort:
+        if "USB-SERIAL CH340" or "USB2.0-Serial" in strPort:
             splitPort = strPort.split(" ")
             commPort = (splitPort[0])
     return commPort
@@ -23,12 +23,14 @@ def processData(client, data):
     splitData = data.split(":")
     print(splitData)
 
-    if splitData[0] == "T":
-        client.publish("temperaturesensor", splitData[1])
-    elif splitData[0] == "L":
-        client.publish("lightsensor", splitData[1])
-    elif splitData[0] == "H":
-        client.publish("humiditysensor", splitData[1])
+    if splitData[0] == "O":
+        client.publish("dadn.sedo", str(int(splitData[1])/10))
+    elif splitData[0] == "T":
+        client.publish("dadn.setemp", splitData[1])
+    elif splitData[0] == "P":
+        client.publish("dadn.sepump", splitData[1])
+    elif splitData[0] == "F":
+        client.publish("dadn.sefan", splitData[1])
 
 mess = ""
 def readSerial(client):

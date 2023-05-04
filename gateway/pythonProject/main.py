@@ -4,10 +4,12 @@ import time
 import random
 from simple_ai import *
 from uart import *
+import requests
+import json
 
-AIO_FEED_IDs = ["fanbutton", "lightbutton", "pumpbutton"]
+AIO_FEED_IDs = []
 AIO_USERNAME = "CurtisDo"
-AIO_KEY = "aio_elTN112umL0wr62yrhTorjg4YFPj"
+AIO_KEY = "aio_njWD31QmgZKQYNasDifPvO8ApTQG"
 
 def connected(client):
     print("Ket noi thanh cong ...")
@@ -23,21 +25,40 @@ def disconnected(client):
 
 def message(client , feed_id , payload):
     print("Nhan du lieu: " + payload + " , feed id:" + feed_id)
-    if feed_id == "fanbutton":
+    if feed_id == "dadn.sepump":
         if payload == "0":
             writeData("1")
         else:
             writeData("2")
-    if feed_id == "lightbutton":
+    if feed_id == "dadn.sefan":
         if payload == "0":
             writeData("3")
         else:
             writeData("4")
-    if feed_id == "pumpbutton":
-        if payload == "0":
-            writeData("5")
-        else:
-            writeData("6")
+
+# Set up the API endpoint URL
+url = "https://io.adafruit.com/api/v2/{0}/feeds".format(AIO_USERNAME)
+
+# Set up the headers with your Adafruit IO API key
+headers = {
+    "Content-Type": "application/json",
+    "X-AIO-Key": AIO_KEY
+}
+
+# Make a GET request to the API endpoint to retrieve a list of all feeds
+response = requests.get(url, headers=headers, verify=False)
+
+# Check if the API request was successful
+if response.status_code == 200:
+    # Parse the response JSON data
+    feeds = json.loads(response.text)
+
+    # Loop through the feeds and save their keys into an array
+    for feed in feeds:
+        AIO_FEED_IDs.append(feed["key"])
+        # print(feed["key"])
+else:
+    print("Failed to retrieve feeds. Error code: {0}".format(response.status_code))
 
 client = MQTTClient(AIO_USERNAME , AIO_KEY)
 client.on_connect = connected
@@ -47,44 +68,7 @@ client.on_subscribe = subscribe
 client.connect()
 client.loop_background()
 
-# counter = 10
-# sensor_type = 0
-# counter_ai = 5
-# ai_result = ""
-# prev_ai_result = ""
-
 while True:
-    # counter = counter - 1
-    # if counter <= 0:
-    #     counter = 10
-    #     #TODO
-    #     print("Random data is publishing...")
-    #     if sensor_type == 0:
-    #
-    #         print("Temperature...")
-    #         temp = random.randint(10, 20)
-    #         client.publish("cambien1", temp)
-    #         sensor_type = 1
-    #     elif sensor_type == 1:
-    #         print("Humidity...")
-    #         humi = random.randint(50, 70)
-    #         client.publish("cambien2", humi)
-    #         sensor_type = 2
-    #     elif sensor_type == 2:
-    #         print("Light...")
-    #         light = random.randint(100, 500)
-    #         client.publish("cambien3", light)
-    #         sensor_type = 0
-
-    # counter_ai = counter_ai - 1
-    # prev_ai_result = ai_result
-    # ai_result = image_detector()
-    # if counter_ai <= 0:
-    #     counter_ai = 5
-    #     print("AI output: ", ai_result)
-    # if ai_result != prev_ai_result:
-    #     client.publish("ai", ai_result)
-
     readSerial(client)
     time.sleep(1)
     pass
