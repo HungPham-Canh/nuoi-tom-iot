@@ -8,13 +8,13 @@ function Data() {
                 <div className='col-6'>
                     <Current type="temp"/>
                 </div>
-                {/* <div className='col-6'>
-                    <Current type="light"/>  
-                </div> */}
+                <div className='col-6'>
+                    <Current type="do"/>  
+                </div>
             </div>
 
             <Chart type="temps"/>
-            <Chart type="lights"/>
+            <Chart type="dos"/>
         </div>
         )
 }

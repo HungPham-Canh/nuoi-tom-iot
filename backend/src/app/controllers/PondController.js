@@ -1,7 +1,7 @@
 import Pond from '../models/Pond'
 import PumpData from '../models/PumpData'
 import TempData from '../models/TempData'
-import LightData from '../models/LightData'
+import DOData from '../models/DOData'
 
 class PondController {
     index(req, res, next) {
@@ -27,16 +27,16 @@ class PondController {
             .catch(next)
     }
 
-    getCurrLightData(req, res, next) {
-        LightData.findOne({pondNo: req.params.pondNo}).sort({createdAt: -1})
-            .then(light => res.json(light))
+    getCurrDOData(req, res, next) {
+        DOData.findOne({pondNo: req.params.pondNo}).sort({createdAt: -1})
+            .then(DO => res.json(DO))
             .catch(next)
     }
 
-    getAllLightData(req, res, next) {
+    getAllDOData(req, res, next) {
         // console.log(req.params.pondNo)
-        LightData.find({pondNo: req.params.pondNo}).sort({createdAt: "asc"})
-            .then(lights => res.json(lights))
+        DOData.find({pondNo: req.params.pondNo}).sort({createdAt: "asc"})
+            .then(DOs => res.json(DOs))
             .catch(next)
     }
 

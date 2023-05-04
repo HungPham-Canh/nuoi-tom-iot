@@ -21,7 +21,7 @@ function Header() {
               <frame class = "infoLogo shadow btn rounded-5">
                   <InfoIcon></InfoIcon>
               </frame>
-              <frame style={{textAlign: "center"}} margin="left" class="text">Information User</frame>
+              <frame style={{textAlign: "center"}} margin="left" class="text">Username</frame>
             </div>
           </div>
           </div>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Switch from "react-switch";
-import { SERVER } from '../../../config/server';
+import { SERVER, ADA_SERVER } from '../../../config/server';
 import axios from "axios";
 import getData from '../../../utils/getData';
 
@@ -8,20 +8,22 @@ function Device({ e, pondNo }) {
     const [isOn, setIsOn] = useState(false);
     const {type, icon, name} = e;
     // const device = ["light", "pump", "temp", "fan"];
+    console.log(type)
 
     useEffect(() => {
         setInterval(() => {
-            getData('https://io.adafruit.com/api/v2/CurtisDo/feeds/dadn.sepump/data')
+            getData(`${ADA_SERVER}/api/v2/CurtisDo/feeds/dadn.se${type}/data`)
                 .then(datas => {
                     const currentData = datas[0]
-                    setIsOn(Number(currentData.value))
+                    setIsOn((currentData.value === "1")? true: false)
                 })
+                .catch(err => console.log("Error", type))
         }, 3000)
     })
 
     const handleClick = async () => {
         try {
-            await axios.post(`${SERVER}/ponds/toggle/${type}`, { pondNo, value: !isOn }).then(res => {
+            await axios.post(`${SERVER}/ponds/1/${type}/toggle`, { pondNo, value: !isOn }).then(res => {
                 // console.log(res)
                 // if (res.data !== "") {
                 //     throw Error(res.data)

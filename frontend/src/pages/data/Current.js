@@ -19,7 +19,7 @@ function Current(props) {
 
     return (
         <div className='current-data'>
-            <h5>{(props.type === "temp") ? "Tempurature" : "Light"}</h5>
+            <h5>{(props.type === "temp") ? "Tempurature" : "Dissolved Oxygen"}</h5>
             {
                 (data.value === "")? (<h2>Loading...</h2>) :
                 (
@@ -27,7 +27,7 @@ function Current(props) {
                 (
                     <GaugeChart id={props.type} style={{width: "100%"}}
                         arcsLength={[0.52, 0.12, 0.36]}
-                        // colors={['#5BE12C', '#F5CD19', '#EA4228']}
+                        colors={['red', 'green', 'red']}
                         percent={data.value / 50}
                         arcPadding={0.01}
                         textColor="black"
@@ -36,10 +36,12 @@ function Current(props) {
                 ) :
                 (
                     <GaugeChart id={props.type} style={{width: "100%"}}
-                        nrOfLevels={1}
-                        colors={["blue"]}
-                        percent={data.value / 100}
+                        arcsLength={[0.45, 0.25, 0.3]}
+                        colors={['red', 'green', 'red']}
+                        percent={data.value / 10}
+                        arcPadding={0.01}
                         textColor="black"
+                        formatTextValue={(value) => (value * 0.1).toString() + ' mg/l'}
                     />
                 )
                 )

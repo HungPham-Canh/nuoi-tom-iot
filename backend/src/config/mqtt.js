@@ -2,12 +2,13 @@ const mqtt = require('mqtt');
 
 const AIO_USERNAME = 'CurtisDo';
 const AIO_KEY = 'aio_njWD31QmgZKQYNasDifPvO8ApTQG';
-const AIO_FEED_KEYS = ["dadn.selight", "dadn.sepump", "dadn.setemp"]
+const AIO_FEED_KEYS = ["dadn.sedo", "dadn.sepump", "dadn.setemp", "dadn.sefan"]
 export const topics = AIO_FEED_KEYS.map(feedName => `${AIO_USERNAME}/feeds/${feedName}`);
+export const host = 'io.adafruit.com'
 
 // create a client object
 const client = mqtt.connect({
-  host: 'io.adafruit.com',
+  host,
   port: 1883,
   username: AIO_USERNAME,
   password: AIO_KEY

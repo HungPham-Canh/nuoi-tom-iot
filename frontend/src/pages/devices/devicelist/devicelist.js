@@ -20,11 +20,12 @@ const devices = [
     //     name: "Nhiệt độ",
     //     icon: <TempIcon />
     // },
-    // {
-    //     id: 3,
-    //     name: "Quạt",
-    //     icon: <FanIcon />
-    // },
+    {
+        id: 3,
+        type: "fan",
+        name: "Quạt",
+        icon: <FanIcon />
+    },
 ];
 
 export default devices;

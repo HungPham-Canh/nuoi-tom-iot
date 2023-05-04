@@ -1,8 +1,9 @@
 // import * as mqtt from "mqtt/dist/mqtt";
 
 export const FEED_TEMP = 'dadn.setemp'
-export const FEED_LIGHT = 'dadn.selight'
+export const FEED_DO = 'dadn.sedo'
 export const FEED_PUMP = 'dadn.sepump'
+export const FEED_FAN = 'dadn.sefan'
 
 export const AIO_USERNAME = 'CurtisDo';
 // const AIO_KEY = 'aio_njWD31QmgZKQYNasDifPvO8ApTQG';

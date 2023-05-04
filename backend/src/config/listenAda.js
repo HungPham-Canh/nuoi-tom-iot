@@ -1,6 +1,7 @@
 import tempController from '../app/controllers/TempController'
-import lightController from '../app/controllers/LightController'
-import pumpController from '../app/controllers/PumpController'; //newest commit
+import doController from '../app/controllers/DOController'
+// import pumpController from '../app/controllers/PumpController'; //newest commit
+import fanEvent from '../services/eventFan'
 import client from './mqtt'
 
 export default client.on('message', (topic, message) => {
@@ -11,8 +12,9 @@ export default client.on('message', (topic, message) => {
     case 'dadn.setemp':
       tempController.addTempData(message)
       break
-    case 'dadn.selight':
-      lightController.addLightData(message)
+    case 'dadn.sedo':
+      doController.addDOData(message)
+      fanEvent.checkDO(message)
       break
   }
 });
