@@ -4,31 +4,31 @@ import getData from '../../utils/getData';
 import GaugeChart from 'react-gauge-chart'
 
 function Current(props) {
-    const [data, setData] = useState({value: ""})
+    const [data, setData] = useState("")
 
     // console.log(data)
 
     useEffect(() => {
-        setTimeout(() => {
+        setInterval(() => {
             getData(`http://localhost:8080/ponds/1/${props.type}`)
                 .then(latest_data => {
-                    setData(latest_data)
+                    setData(latest_data.value)
                 })
         }, 5000)
-    }, [data.value])
+    }, [data])
 
     return (
         <div className='current-data'>
             <h5>{(props.type === "temp") ? "Tempurature" : "Dissolved Oxygen"}</h5>
             {
-                (data.value === "")? (<h2>Loading...</h2>) :
+                (data === "")? (<h2>Loading...</h2>) :
                 (
                 (props.type === "temp") ? 
                 (
                     <GaugeChart id={props.type} style={{width: "100%"}}
                         arcsLength={[0.52, 0.12, 0.36]}
                         colors={['red', 'green', 'red']}
-                        percent={data.value / 50}
+                        percent={data / 50}
                         arcPadding={0.01}
                         textColor="black"
                         formatTextValue={(value) => (value * 0.5).toString() + ' °C'}
@@ -38,7 +38,7 @@ function Current(props) {
                     <GaugeChart id={props.type} style={{width: "100%"}}
                         arcsLength={[0.45, 0.25, 0.3]}
                         colors={['red', 'green', 'red']}
-                        percent={data.value / 10}
+                        percent={data / 10}
                         arcPadding={0.01}
                         textColor="black"
                         formatTextValue={(value) => (value * 0.1).toString() + ' mg/l'}
