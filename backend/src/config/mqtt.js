@@ -1,7 +1,7 @@
 const mqtt = require('mqtt');
 
-const AIO_USERNAME = 'CurtisDo';
-const AIO_KEY = 'aio_elTN112umL0wr62yrhTorjg4YFPj';
+const AIO_USERNAME = 'CurtisDo'; // Replace with your username
+const AIO_KEY = 'aio_elTN112umL0wr62yrhTorjg4YFPj'; // Replace with your key
 const AIO_FEED_KEYS = ["dadn.se-light", "dadn.se-pump", "dadn.se-temp"]
 const topics = AIO_FEED_KEYS.map(feedName => `${AIO_USERNAME}/feeds/${feedName}`);
 
