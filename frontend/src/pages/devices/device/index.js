@@ -6,7 +6,7 @@ import getData from '../../../utils/getData';
 
 function Device({ e, pondNo }) {
     const [isOn, setIsOn] = useState(false);
-    const {type, icon, name} = e;
+    const { type, icon, name } = e;
     // const device = ["light", "pump", "temp", "fan"];
     console.log(type)
 
@@ -15,7 +15,7 @@ function Device({ e, pondNo }) {
             getData(`${ADA_SERVER}/api/v2/CurtisDo/feeds/dadn.se${type}/data`)
                 .then(datas => {
                     const currentData = datas[0]
-                    setIsOn((currentData.value === "1")? true: false)
+                    setIsOn((currentData.value === "1") ? true : false)
                 })
                 .catch(err => console.log("Error", type))
         }, 3000)
